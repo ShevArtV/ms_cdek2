@@ -186,30 +186,33 @@ class ms_CDEK2
     
     function getSenderCity()
     {
-        $response = array_shift($this->makeRequest('location/cities', [
+        $response = $this->makeRequest('location/cities', [
             'postal_code' => $this->config['sender_index']
-        ]));
+        ]);
+        $response = array_shift($response);
         return $response['city'];
     }
-    
+
     function getDeliveryCity()
     {
         $response = [];
         if (!empty($_SESSION['minishop2']['order']['city'])) {
-            $response = array_shift($this->makeRequest('location/cities', [
+            $response = $this->makeRequest('location/cities', [
                 'city' => $_SESSION['minishop2']['order']['city']
-            ]));
+            ]);
+            $response = array_shift($response);
         }
         if (empty($response['city'])) {
             $index = $this->config['sender_index'];
             if (!empty($_SESSION['minishop2']['order']['index'])) {
                 $index = $_SESSION['minishop2']['order']['index'];
             }
-            $response = array_shift($this->makeRequest('location/cities', [
+            $response = $this->makeRequest('location/cities', [
                 'postal_code' => $index
-            ]));
+            ]);
+            $response = array_shift($response);
         }
-        return $response['city'];
+        return $response;
     }
 
     function getPointIndex()
@@ -217,8 +220,10 @@ class ms_CDEK2
         $data = $this->makeRequest('deliverypoints', [
             'city_code' => $_POST['city_code']
         ]);
+
         foreach($data as $point) {
             if ($point['code'] == $_POST['point']) {
+                $this->modx->log(1, print_r($point, 1));
                 if (!empty($point['location']['postal_code'])) {
                     return $point['location']['postal_code'];
                 }
@@ -226,6 +231,28 @@ class ms_CDEK2
         }
 
         return $this->config['sender_index'];
+    }
+
+    function getPointAddress()
+    {
+        $data = $this->makeRequest('deliverypoints', [
+            'city_code' => $_POST['city_code']
+        ]);
+
+        foreach($data as $point) {
+            if ($point['code'] == $_POST['point']) {
+                if (!empty($point['location']['postal_code'])) {
+                    return [
+                        'city' => $point['location']['city'],
+                        'city_code' => $point['location']['city_code'],
+                        'region' => $point['location']['region'],
+                        'index' => $point['location']['postal_code'],
+                    ];
+                }
+            }
+        }
+
+        return [];
     }
 
 }

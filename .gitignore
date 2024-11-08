@@ -39,3 +39,4 @@ config.core.php
 /.htaccess
 /config.core.php
 /index.php
+/assets/components/sdek/

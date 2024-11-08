@@ -64,13 +64,16 @@ class msCDEKHandler extends msDeliveryHandler implements msDeliveryInterface{
             if ($order['city']) {
                 $query['city'] = $order['city'];
             }
-            if (!empty($query)) {
+            if($_COOKIE['cityCode']){
+                $to_location['code'] = $_COOKIE['cityCode'];
+            }
+            if (!empty($query) && empty($to_location)) {
                 $to_location = $ms_CDEK2->getLocation($query);
             }
             if (empty($to_location)) {
                 $to_location = $from_location;
             }
-            
+
             $packages = [];
             $weight = 0;
             foreach ($cart as $product) {
@@ -87,11 +90,13 @@ class msCDEKHandler extends msDeliveryHandler implements msDeliveryInterface{
             if (!$weight) {
                 $weight = 1000;
             }
+
             $response = $ms_CDEK2->makeRequest('calculator/tarifflist', [
                 'from_location' => $from_location,
                 'to_location' => $to_location,
                 'packages' => $packages
             ]);
+
 
             $tarifs_available = [];
             $properties = $delivery->get('properties');

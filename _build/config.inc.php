@@ -11,10 +11,10 @@ if (!defined('MODX_CORE_PATH')) {
 return [
     'name' => 'ms_CDEK2',
     'name_lower' => 'ms_cdek2',
-    'version' => '2.1.2',
+    'version' => '2.2.0',
     'release' => 'beta',
     // Install package to site right after build
-    'install' => true,
+    'install' => false,
     // Which elements should be updated on package upgrade
     'update' => [
         'chunks' => false,

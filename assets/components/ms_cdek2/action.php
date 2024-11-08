@@ -33,12 +33,10 @@ switch ($_POST['action']) {
         break;
     case 'defaultCity':
         $output['success'] = true;
-        $output['city'] = $ms_CDEK2->getDeliveryCity();
+        $output['data'] = $ms_CDEK2->getDeliveryCity();
         break;
-    case 'getPointIndex':
-        $index = $ms_CDEK2->getPointIndex();
-        $output['success'] = !empty($index);
-        $output['index'] = $index;
+    case 'getPointAddress':
+        $output = $ms_CDEK2->getPointAddress();
         break;
     default:
         header("HTTP/1.1 403 Forbidden");

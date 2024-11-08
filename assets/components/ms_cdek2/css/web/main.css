@@ -1,0 +1,9 @@
+.hide {
+  display: none;
+}
+
+#ms_cdek2_map {
+  height: 600px;
+  margin-top: 20px;
+  background: #ededed;
+}
