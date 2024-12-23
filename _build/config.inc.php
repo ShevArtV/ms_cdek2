@@ -12,9 +12,9 @@ return [
     'name' => 'ms_CDEK2',
     'name_lower' => 'ms_cdek2',
     'version' => '2.2.0',
-    'release' => 'beta',
+    'release' => 'beta3',
     // Install package to site right after build
-    'install' => false,
+    'install' => true,
     // Which elements should be updated on package upgrade
     'update' => [
         'chunks' => false,

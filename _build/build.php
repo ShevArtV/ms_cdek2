@@ -61,8 +61,8 @@ class ms_CDEK2Package
     {
         $this->builder = $this->modx->getService('transport.modPackageBuilder');
         $this->builder->createPackage($this->config['name_lower'], $this->config['version'], $this->config['release']);
-        $username = 'ilyautkin@mail.ru'; // Укажите свой аккаунт
-        $api_key = '74d1c74fe9efc8b2e7b468df04e68bb1'; // и свой ключ сайта
+        $username = 'shev.art.v@yandex.ru'; // Укажите свой аккаунт
+        $api_key = 'df1f6ad36c41c1bcfec735c8ae4a3d4a'; // и свой ключ сайта
 
         $client = $this->modx->getService('rest.modRestCurlClient');
         $result = $client->request('https://modstore.pro/extras/package/', 'encode', 'POST', array(

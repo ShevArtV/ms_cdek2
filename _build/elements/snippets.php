@@ -7,7 +7,7 @@ return [
         'properties' => [
             'frontend_js' => [
                 'type' => 'textfield',
-                'value' => '{assets_url}components/ms_cdek2/js/web/main.js',
+                'value' => '{assets_url}components/ms_cdek2/js/web/mscdek.js',
             ],
         ],
     ],

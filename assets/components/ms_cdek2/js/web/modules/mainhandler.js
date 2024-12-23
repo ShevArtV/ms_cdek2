@@ -34,7 +34,7 @@ export default class MainHandler {
       for(let key in response.data){
         let field = document.querySelector(miniShop2.Order.order + ' [name="' + key + '"]');
         if(field){
-          field.value = response.data[key];
+          !['delivery','payment'].includes(key) && (field.value = response.data[key]);
           field.closest(miniShop2.Order.inputParent).classList.remove('error');
           field.classList.remove('error');
         }

@@ -55,5 +55,20 @@ return [
         'xtype' => 'textfield',
         'value' => '[1, 1, 1]',
         'area' => 'ms_cdek2_main',
-    ]
+    ],
+    'ms_cdek2_autocomplete' => [
+        'xtype' => 'combo-boolean',
+        'value' => '1',
+        'area' => 'ms_cdek2_main',
+    ],
+    'ms_cdek2_autocomplete_css_path' => [
+        'xtype' => 'textfield',
+        'value' => '{assets_url}components/ms_cdek2/css/web/suggestions.css',
+        'area' => 'ms_cdek2_main',
+    ],
+    'ms_cdek2_main_css_path' => [
+        'xtype' => 'textfield',
+        'value' => '{assets_url}components/ms_cdek2/js/web/mscdek.js',
+        'area' => 'ms_cdek2_main',
+    ],
 ];
